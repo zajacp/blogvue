@@ -6,6 +6,12 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+
+import "../assets/stylesheets/main.scss"
+
+Vue.use(BootstrapVue)
+
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
