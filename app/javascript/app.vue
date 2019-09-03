@@ -3,6 +3,7 @@
   <div id="app">
     <NavigationTop></NavigationTop>
     <p>{{ message }}</p>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>

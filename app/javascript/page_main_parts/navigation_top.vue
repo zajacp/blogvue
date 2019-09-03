@@ -6,7 +6,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <template v-for="link in navigationLinks">
-          <b-nav-item href="#"> {{link}}</b-nav-item>
+          <b-nav-item :to="'/' + link"> {{link}}</b-nav-item>
         </template>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
@@ -28,8 +28,8 @@
 		data: function () {
 			return {
 		    navigationLinks: [
-		    	'nav1',
-          'nav2',
+		    	'first',
+          'second',
           'nav3'
         ]
 			}
