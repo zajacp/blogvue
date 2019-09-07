@@ -8,11 +8,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import TurbolinksAdapter from 'vue-turbolinks'
+// import camelcaseKeys from 'camelize2'
+// import snakecaseKeys from 'snakecase-keys'
+import humps from 'humps'
 
 import "../assets/stylesheets/main.scss"
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
+Vue.use(VueAxios, axios)
 
 import router from '../routes.js'
 import App from '../app.vue'
@@ -27,6 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log(app)
 })
+
+
+// Add X-CSRF-token to header and header json
+document.addEventListener('turbolinks:load', () => {
+  // This code will setup headers of X-CSRF-Token that it grabs from rails generated token in meta tag.
+  axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+  axios.defaults.headers.common['Accept'] = 'application/json';
+  axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  new Vue({
+      mixin: [TurbolinksAdapter],
+  })
+})
+
+
+// Change snake style to camelcase, keys from application
+axios.defaults.transformResponse = [
+  ...axios.defaults.transformResponse,
+  data => humps.camelizeKeys(data)
+]
+
+// Change camelcase to snake style from vue to application
+axios.defaults.transformRequest = [
+  data => humps.decamelizeKeys(data),
+  ...axios.defaults.transformRequest
+]
+
+// Vue.axios.defaults.headers = {
+//   'Content-Type': 'application/json;charset=UTF-8',
+//     "Access-Control-Allow-Origin": "*",
+// }
+
 
 
 // The above code uses Vue without the compiler, which means you cannot

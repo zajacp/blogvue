@@ -13,6 +13,14 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
+          <template slot="button-content"><em>Post</em></template>
+          <b-dropdown-item :to="'/posts'">Index</b-dropdown-item>
+          <b-dropdown-item :to="'/posts/new'">New</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item-dropdown right>
+          <!-- Using 'button-content' slot -->
           <template slot="button-content"><em>User</em></template>
           <b-dropdown-item href="#">Profile</b-dropdown-item>
           <b-dropdown-item href="#">Sign Out</b-dropdown-item>
