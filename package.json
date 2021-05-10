@@ -11,7 +11,7 @@
     "bootstrap-vue": "^2.0.0-rc.28",
     "camelcase-keys": "^6.0.1",
     "humps": "^2.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "portal-vue": "^2.1.6",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",
